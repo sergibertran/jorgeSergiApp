@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "144579970797",
+    "project_id": "prueba-56308",
+    "storage_bucket": "prueba-56308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:144579970797:android:9d30b705f9c4dc86cc6ee4",
+        "android_client_info": {
+          "package_name": "com.example.jorgesergiapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvMYlTFPBU7LIGKVGdVHajEzRzoMQMP3g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
