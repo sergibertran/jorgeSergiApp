@@ -41,9 +41,9 @@ class detalle : AppCompatActivity() {
 
     data class pokemon(val nombre: String, val descripcion: String, val foto: Int)
     data class PokemonFB(
-        val Nombre: String = "asd",
-        val Tipo: String = "asd",
-        val Descripcion: String = "asd",
+        val Nombre: String = "",
+        val Tipo: String = "",
+        val Descripcion: String = "",
         val Foto: Int = 0  // Si necesitas una referencia a una imagen local
     )
     private fun fetchPokemonsFromFirestore() {
@@ -51,13 +51,7 @@ class detalle : AppCompatActivity() {
 
         db.collection("Pokemon")
             .get()
-            .addOnSuccessListener { result ->
-                pokemons = result.documents.mapNotNull { document ->
-                    document.toObject<PokemonFB>()
-                }
 
-                updateUIWithPokemons()
-            }
             .addOnSuccessListener { result ->
                 pokemons = result.documents.mapNotNull { document ->
                     document.toObject<PokemonFB>()
