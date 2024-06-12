@@ -39,10 +39,10 @@ class register : AppCompatActivity() {
     )
     private fun registerEntrenador(nombre: String, contraseña: String,correo: String) {
         val db = FirebaseFirestore.getInstance()
-        val entrenador = Entrenador(nombre, contraseña,correo)
+        val Entrenador = Entrenador(nombre, contraseña,correo)
 
-        db.collection("entrenador")
-            .add(entrenador)
+        db.collection("Entrenador")
+            .add(Entrenador)
             .addOnSuccessListener {
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
                 // Puedes redirigir al usuario a otra pantalla si lo deseas

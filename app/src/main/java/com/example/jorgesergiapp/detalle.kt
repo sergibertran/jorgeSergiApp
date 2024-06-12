@@ -58,6 +58,18 @@ class detalle : AppCompatActivity() {
 
                 updateUIWithPokemons()
             }
+            .addOnSuccessListener { result ->
+                pokemons = result.documents.mapNotNull { document ->
+                    document.toObject<PokemonFB>()
+                }
+
+                // Imprime los datos de pokemons en la consola
+                pokemons.forEachIndexed { index, pokemon ->
+                    Log.d("Pokemons", "Pokemon $index: Nombre: ${pokemon.Nombre}, Descripción: ${pokemon.Descripcion}, Tipo: ${pokemon.Tipo}")
+                }
+
+                updateUIWithPokemons()
+            }
             .addOnFailureListener { exception ->
                 // Manejar errores aquí
                 Log.e("Firestore", "Error getting documents: ", exception)
