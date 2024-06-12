@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class UsuarioAdapter(private val listaUsuarios: List<detalle.pokemon>) :
-    RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
+class PokemonAdapter(private val listaUsuarios: List<detalle.pokemon>) :
+    RecyclerView.Adapter<PokemonAdapter.UsuarioViewHolder>() {
 
     class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFoto: ImageView = itemView.findViewById(R.id.imageViewFoto)
@@ -18,7 +18,7 @@ class UsuarioAdapter(private val listaUsuarios: List<detalle.pokemon>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_usuario, parent, false)
+            .inflate(R.layout.item_pokemon, parent, false)
         return UsuarioViewHolder(itemView)
     }
 

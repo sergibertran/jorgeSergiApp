@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6C2C2C"
-    tools:context=".login">
+    tools:context=".loginApp">
 
 
     <EditText
@@ -51,6 +51,21 @@
         android:layout_marginBottom="252dp"
         android:onClick="login"
         android:text="iniciar sesion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.193"
+        app:layout_constraintStart_toStartOf="parent"
+        app:rippleColor="#BC5656" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="163dp"
+        android:layout_height="74dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginEnd="149dp"
+        android:layout_marginBottom="144dp"
+        android:onClick="register"
+        android:text="registrarse"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.193"

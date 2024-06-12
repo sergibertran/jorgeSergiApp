@@ -2,12 +2,11 @@ package com.example.jorgesergiapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ListView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jorgesergiapp.models.Usuario
 
-class users : AppCompatActivity() {
+class usersCrud : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -22,7 +21,7 @@ class users : AppCompatActivity() {
 
 
 
-        val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
+        val recyclerView: RecyclerView = findViewById(R.id.recyclerUserView)
         val adapter = UserListAdapter(usuarios)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter

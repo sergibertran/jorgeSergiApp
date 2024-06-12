@@ -6,7 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import com.example.jorgesergiapp.models.Usuario
 
-class home : AppCompatActivity() {
+class loginApp : AppCompatActivity() {
     object UserManager {
         var usuario: Usuario? = null
     }
@@ -21,7 +21,7 @@ class home : AppCompatActivity() {
             // Guardar información del usuario en el Singleton
             UserManager.usuario = usuarioObjeto
 
-            val intent = Intent(this, login::class.java)
+            val intent = Intent(this, homeApp::class.java)
             startActivity(intent)
         }
         val buttonClickRegister = findViewById<Button>(R.id.button3)

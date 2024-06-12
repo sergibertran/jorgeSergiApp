@@ -13,7 +13,7 @@
         android:theme="@style/Theme.JorgeSergiApp"
         tools:targetApi="31">
         <activity
-            android:name=".UsuarioAdapter"
+            android:name=".PokemonAdapter"
             android:exported="false" />
         <activity
             android:name=".pokemonDetailHostActivity"
@@ -24,16 +24,22 @@
         <activity
             android:name=".detalle"
             android:exported="false" />
+            <activity
+            android:name=".usersCrud"
+            android:exported="false" />
+              <activity
+            android:name=".crud"
+            android:exported="false" />
         <activity
             android:name=".register"
             android:exported="false" />
         <activity
-            android:name=".home"
+            android:name=".homeApp"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:theme="@style/Theme.JorgeSergiApp" />
         <activity
-            android:name=".login"
+            android:name=".loginApp"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

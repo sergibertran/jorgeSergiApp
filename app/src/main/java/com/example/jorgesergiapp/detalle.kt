@@ -17,7 +17,7 @@ class detalle : AppCompatActivity() {
         )
 
         val recyclerView: RecyclerView = findViewById(R.id.recyclerView)
-        val adapter = UsuarioAdapter(pokemons)
+        val adapter = PokemonAdapter(pokemons)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 

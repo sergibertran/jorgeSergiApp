@@ -11,7 +11,7 @@
             android:icon="@drawable/baseline_format_list_bulleted_24"
             android:title="Search" />
         <item android:id="@+id/page_4"
-            android:icon="@drawable/baseline_format_list_bulleted_24"
+            android:icon="@drawable/baseline_supervised_user_circle_24"
             android:title="Search" />
 
 </menu>
