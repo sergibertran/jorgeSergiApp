@@ -34,7 +34,7 @@ class register : AppCompatActivity() {
     }
     data class Entrenador(
         val nombre: String = "",
-        val contraseña: String = ""
+        val contraseña: String = "",
         val correo: String = ""
     )
     private fun registerEntrenador(nombre: String, contraseña: String,correo: String) {
