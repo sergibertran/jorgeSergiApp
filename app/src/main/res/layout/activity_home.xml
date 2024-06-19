@@ -8,16 +8,33 @@
     tools:context=".homeApp"
     >
 
+    <!--Add a textView for front part of the card-->
     <FrameLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#6C2C2C"
         app:layout_constraintBottom_toBottomOf="@+id/navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></FrameLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
-    <!--Add a textView for front part of the card-->
+        <Button
+            android:id="@+id/sound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Button"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="142dp"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="559dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+    </FrameLayout>
+
     <TextView
         android:id="@+id/card_back"
         android:layout_width="300dp"

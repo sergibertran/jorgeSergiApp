@@ -8,16 +8,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.media.MediaPlayer
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class homeApp : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        var mediaPlayer: MediaPlayer? = null
+        var isPlaying = false
         var isAdmin: Boolean = false
         lateinit var front_animation:AnimatorSet
         lateinit var back_animation: AnimatorSet
         var isFront =true
+
 
 
         super.onCreate(savedInstanceState)
@@ -64,6 +68,7 @@ class homeApp : AppCompatActivity() {
         val front = findViewById<TextView>(R.id.card_front) as TextView
         val back =findViewById<TextView>(R.id.card_back) as TextView
         val flip = findViewById<Button>(R.id.flip_btn) as Button
+        val sound = findViewById<Button>(R.id.sound) as Button
         front.cameraDistance = 8000 * scale
         back.cameraDistance = 8000 * scale
 
@@ -92,6 +97,29 @@ class homeApp : AppCompatActivity() {
 
             }
         }
+        sound.setOnClickListener {
+            if (isPlaying) {
+                // Detener la reproducción
+                mediaPlayer?.pause()
+                mediaPlayer?.seekTo(0) // Opcional: para reiniciar desde el principio
+                isPlaying = false
+                sound.text = "Musica"
+            } else {
+                // Iniciar la reproducción
+                if (mediaPlayer == null) {
+                    mediaPlayer = MediaPlayer.create(this, R.raw.musica) // Ajusta aquí el nombre del archivo
+                    mediaPlayer?.setOnCompletionListener {
+                        // Restablecer cuando la música termina
+                        isPlaying = false
+                        sound.text = "Musica"
+                    }
+                }
+                mediaPlayer?.start()
+                isPlaying = true
+                sound.text = "Parar"
+            }
+        }
+
     }
 
     private fun checkIfUserIsAdmin(): Boolean {

@@ -12,9 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JorgeSergiApp"
         tools:targetApi="31" >
-        <meta-data
-            android:name="com.google.android.actions"
-            android:resource="@xml/edit_text_border.xml" />
+
 
         <activity
             android:name=".PokemonAdapter"
