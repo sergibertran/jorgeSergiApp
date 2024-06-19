@@ -44,7 +44,11 @@ class homeApp : AppCompatActivity() {
                     val intent = Intent(this, usersCrud::class.java)
                     startActivity(intent)
                     true
-                }
+                }R.id.profile -> {
+                val intent = Intent(this, Profile::class.java)
+                startActivity(intent)
+                true
+            }
                 // Agrega más casos según sea necesario
                 else -> false
             }
