@@ -42,20 +42,18 @@ class loginApp : AppCompatActivity() {
                     // Si no se encuentra un usuario coincidente, muestra un mensaje de error
                     Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT)
                         .show()
+
                     val intent = Intent(this, homeApp::class.java)
                     startActivity(intent)
 
                 }
+
+            }
             val buttonClickRegister = findViewById<Button>(R.id.button3)
             buttonClickRegister.setOnClickListener {
                 val intent = Intent(this, register::class.java)
                 startActivity(intent)
-            }
-
-
         }
-
-
 
     }
 }
