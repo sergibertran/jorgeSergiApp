@@ -36,7 +36,7 @@ class detalle : AppCompatActivity() {
 
         val pokemonAdapter = PokemonAdapter(pokemons)
         recyclerView.adapter = pokemonAdapter
-        fetchPokemonsFromFirestore()
+
     }
 
     data class pokemon(val nombre: String, val descripcion: String, val foto: Int)
@@ -46,29 +46,7 @@ class detalle : AppCompatActivity() {
         val Descripcion: String = "",
         val Foto: Int = 0  // Si necesitas una referencia a una imagen local
     )
-    private fun fetchPokemonsFromFirestore() {
-        val db = Firebase.firestore
 
-        db.collection("Pokemon")
-            .get()
-
-            .addOnSuccessListener { result ->
-                pokemons = result.documents.mapNotNull { document ->
-                    document.toObject<PokemonFB>()
-                }
-
-                // Imprime los datos de pokemons en la consola
-                pokemons.forEachIndexed { index, pokemon ->
-                    Log.d("Pokemons", "Pokemon $index: Nombre: ${pokemon.Nombre}, Descripción: ${pokemon.Descripcion}, Tipo: ${pokemon.Tipo}")
-                }
-
-                updateUIWithPokemons()
-            }
-            .addOnFailureListener { exception ->
-                // Manejar errores aquí
-                Log.e("Firestore", "Error getting documents: ", exception)
-            }
-    }
     private fun updateUIWithPokemons() {
         // Aquí puedes actualizar la UI con la lista de Pokémon obtenida
         // Por ejemplo, podrías actualizar un RecyclerView

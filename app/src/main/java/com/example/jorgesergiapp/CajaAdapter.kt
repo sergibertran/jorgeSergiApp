@@ -7,8 +7,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class PokemonAdapter(private val listaUsuarios: List<detalle.pokemon>) :
-    RecyclerView.Adapter<PokemonAdapter.UsuarioViewHolder>() {
+class CajaAdapter(private val listaUsuarios: List<detalle.pokemon>) :
+    RecyclerView.Adapter<CajaAdapter.UsuarioViewHolder>() {
 
     class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFoto: ImageView = itemView.findViewById(R.id.imageViewFoto)

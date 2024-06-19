@@ -3,11 +3,9 @@ package com.example.jorgesergiapp
 
 import android.animation.AnimatorInflater
 import android.animation.AnimatorSet
-import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -35,26 +33,23 @@ class homeApp : AppCompatActivity() {
 
         navigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
-                R.id.page_1 -> {
-                    val intent = Intent(this, detalle::class.java)
+                R.id.home -> {
+                    val intent = Intent(this, homeApp::class.java)
                     startActivity(intent)
                     true
-                }
-                R.id.page_4 -> {
-                    val intent = Intent(this, usersCrud::class.java)
-                    startActivity(intent)
-                    true
-                }R.id.profile -> {
-                val intent = Intent(this, Profile::class.java)
+                } R.id.profile -> {
+                val intent = Intent(this, profile::class.java)
                 startActivity(intent)
                 true
-            }
+                } R.id.listaTodosPokemons -> {
+                val intent = Intent(this, detalle::class.java)
+                startActivity(intent)
+                true
+                }
                 // Agrega más casos según sea necesario
                 else -> false
             }
         }
-
-
 
 
         val cardFront: TextView = findViewById(R.id.card_front)
