@@ -25,21 +25,23 @@ class register : AppCompatActivity() {
             val nombre = etName.text.toString().trim()
             val contraseña = etPassword.text.toString().trim()
             val correo = etCorreo.text.toString().trim()
+            val admin = false
             if (nombre.isEmpty() || contraseña.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             } else {
-                registerEntrenador(nombre, contraseña, correo)
+                registerEntrenador(nombre, contraseña, correo,admin)
             }
         }
     }
     data class Entrenador(
         val nombre: String = "",
         val contraseña: String = "",
-        val correo: String = ""
+        val correo: String = "",
+        val admin: Boolean
     )
-    private fun registerEntrenador(nombre: String, contraseña: String,correo: String) {
+    private fun registerEntrenador(nombre: String, contraseña: String,correo: String, admin: Boolean) {
         val db = FirebaseFirestore.getInstance()
-        val Entrenador = Entrenador(nombre, contraseña,correo)
+        val Entrenador = Entrenador(nombre, contraseña,correo, admin)
 
         db.collection("Entrenador")
             .add(Entrenador)

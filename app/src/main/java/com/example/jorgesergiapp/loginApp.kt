@@ -26,12 +26,16 @@ class loginApp : AppCompatActivity() {
             // Guardar información del usuario en el Singleton
             // UserManager.usuario = usuarioObjeto
             // Consulta la colección "Entrenador" para el correo proporcionado
+
+            if (usuarioEditText.text.isNullOrBlank() || usuarioPass.text.isNullOrBlank()) {
+                Toast.makeText(this, "Por favor ingrese correo y contraseña", Toast.LENGTH_SHORT).show()
+            }
             db.collection("Entrenador")
-                .whereEqualTo("Correo", usuarioEditText.text.toString())
+                .whereEqualTo("Correo", usuarioEditText.text.toString().trim())
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
-                        val storedPassword = document.getString("contraseña")
+                        val storedPassword = document.getString("Contraseña")
                         if (storedPassword == usuarioPass.text.toString()) {
                             // Contraseña coincide, redirige al homeApp
                             val intent = Intent(this, homeApp::class.java)
@@ -40,11 +44,11 @@ class loginApp : AppCompatActivity() {
                         }
                     }
                     // Si no se encuentra un usuario coincidente, muestra un mensaje de error
-                    Toast.makeText(this, "Correo o contraseña incorrectos", Toast.LENGTH_SHORT)
+                    Toast.makeText(this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT)
                         .show()
 
-                    val intent = Intent(this, homeApp::class.java)
-                    startActivity(intent)
+                   // val intent = Intent(this, homeApp::class.java)
+                    //startActivity(intent)
 
                 }
 
