@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import android.os.Bundle
+import com.example.jorgesergiapp.models.Usuario
 
 class register : AppCompatActivity() {
     private lateinit var etName: EditText
@@ -23,28 +24,23 @@ class register : AppCompatActivity() {
 
         btnRegister.setOnClickListener {
             val nombre = etName.text.toString().trim()
-            val contraseña = etPassword.text.toString().trim()
+            val password = etPassword.text.toString().trim()
             val correo = etCorreo.text.toString().trim()
-            val admin = false
-            if (nombre.isEmpty() || contraseña.isEmpty()) {
+
+            if (nombre.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
             } else {
-                registerEntrenador(nombre, contraseña, correo,admin)
+                registerEntrenador(nombre, password, correo,0)
             }
         }
     }
-    data class Entrenador(
-        val nombre: String = "",
-        val contraseña: String = "",
-        val correo: String = "",
-        val admin: Boolean
-    )
-    private fun registerEntrenador(nombre: String, contraseña: String,correo: String, admin: Boolean) {
-        val db = FirebaseFirestore.getInstance()
-        val Entrenador = Entrenador(nombre, contraseña,correo, admin)
 
-        db.collection("Entrenador")
-            .add(Entrenador)
+    private fun registerEntrenador(nombre: String, password: String,correo: String, admin: Int) {
+        val db = FirebaseFirestore.getInstance()
+        val user = Usuario(nombre, password,correo, 0)
+
+        db.collection("usuarios")
+            .add(user)
             .addOnSuccessListener {
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
                 // Puedes redirigir al usuario a otra pantalla si lo deseas

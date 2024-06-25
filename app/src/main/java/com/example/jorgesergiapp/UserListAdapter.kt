@@ -42,8 +42,7 @@ class UserListAdapter(private val listaUsuarios: List<Usuario>) :
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, crud::class.java).apply {
-                // Agregar el usuario como extra al Intent
-                putExtra("usuario", usuario)
+
             }
             context.startActivity(intent)
         }

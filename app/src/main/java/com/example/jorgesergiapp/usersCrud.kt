@@ -12,10 +12,11 @@ class usersCrud : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_users)
 
+
             val usuarios: List<Usuario> = listOf(
-                Usuario("admin", "password1", foto = obtenerRecursoImagen(1),tipoUsuario = 0),
-                Usuario("usuario2", "password2",foto = obtenerRecursoImagen(0),tipoUsuario = 0),
-                Usuario("usuario3", "password3",foto = obtenerRecursoImagen(1),tipoUsuario = 1)
+                Usuario("admin", "password1", foto = obtenerRecursoImagen(1)),
+                Usuario("usuario2", "password2",foto = obtenerRecursoImagen(0)),
+                Usuario("usuario3", "password3",foto = obtenerRecursoImagen(1))
 
             )
 
