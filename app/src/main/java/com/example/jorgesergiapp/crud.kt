@@ -16,11 +16,6 @@ class crud : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_crud)
 
-
-
-
-
-
         // Recuperar el objeto de usuario del Intent
         val usuario: Usuario? =  intent.getParcelableExtra("DATA", Usuario::class.java)
 

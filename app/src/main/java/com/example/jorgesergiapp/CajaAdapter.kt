@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jorgesergiapp.models.todosPokemons
 
-class CajaAdapter(private val listaUsuarios: List<detalle.pokemon>) :
+class CajaAdapter(private val listaUsuarios: List<todosPokemons>) :
     RecyclerView.Adapter<CajaAdapter.UsuarioViewHolder>() {
 
     class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +25,7 @@ class CajaAdapter(private val listaUsuarios: List<detalle.pokemon>) :
 
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
         val usuario = listaUsuarios[position]
-        holder.imageViewFoto.setImageResource(usuario.foto)
+
         holder.textViewNombre.text = usuario.nombre
         holder.textViewDescripcion.text = usuario.descripcion
     }

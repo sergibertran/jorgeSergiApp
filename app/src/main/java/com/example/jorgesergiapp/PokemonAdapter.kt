@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-
-class PokemonAdapter(private val listaUsuarios: List<detalle.pokemon>) :
+import com.example.jorgesergiapp.models.todosPokemons
+import coil.load
+class PokemonAdapter(private val listaUsuarios: List<todosPokemons>) :
     RecyclerView.Adapter<PokemonAdapter.UsuarioViewHolder>() {
 
     class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -24,7 +25,14 @@ class PokemonAdapter(private val listaUsuarios: List<detalle.pokemon>) :
 
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
         val usuario = listaUsuarios[position]
-        holder.imageViewFoto.setImageResource(usuario.foto)
+        val imageUrl = usuario.foto
+
+
+        val imageViewFoto: ImageView = holder.imageViewFoto
+        imageViewFoto.load(imageUrl) {
+            crossfade(true) // Animación de fade durante la carga de la imagen
+        }
+
         holder.textViewNombre.text = usuario.nombre
         holder.textViewDescripcion.text = usuario.descripcion
     }

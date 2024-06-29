@@ -10,86 +10,119 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.jorgesergiapp.models.Usuario
+import com.example.jorgesergiapp.userApp.Companion.prefs
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 
+class loginApp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-class loginApp : AppCompatActivity() {
-    object UserManager {
-        var usuario: Usuario? = null
-    }
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    private val db = FirebaseFirestore.getInstance()
 
-    lateinit var drawerLayout: DrawerLayout
-    lateinit var  actionBarDrawerToggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-        val db = FirebaseFirestore.getInstance()
-        //**BORRAR** main();
+
+        setupViews()
+        setupDrawer()
+
+        // Verificar si ya hay un usuario guardado en prefs
+        checkUserValues()
+    }
+
+    private fun setupViews() {
         val buttonClick = findViewById<Button>(R.id.button)
         buttonClick.setOnClickListener {
             val usuarioEditText = findViewById<EditText>(R.id.editTextTextEmailAddress2)
             val usuarioPass = findViewById<EditText>(R.id.editTextTextPassword)
 
-            //**BORRAR** val usuarioObjeto = Usuario(usuarioEditText.text.toString(), "",0,0)
-            // Guardar información del usuario en el Singleton
-            // UserManager.usuario = usuarioObjeto
-            // Consulta la colección "Entrenador" para el correo proporcionado
-
             if (usuarioEditText.text.isNullOrBlank() || usuarioPass.text.isNullOrBlank()) {
                 Toast.makeText(this, "Por favor ingrese correo y contraseña", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
             }
+
             db.collection("usuarios")
-                .whereEqualTo("password", usuarioEditText.text.toString().trim())
+                .whereEqualTo("usuario", usuarioEditText.text.toString().trim())
+                .whereEqualTo("password", usuarioPass.text.toString().trim())
                 .get()
                 .addOnSuccessListener { documents ->
                     for (document in documents) {
+                        val id = document.id
                         val storedPassword = document.getString("password")
+                        val storedUser = document.getString("usuario")
                         if (storedPassword == usuarioPass.text.toString()) {
-                            // Contraseña coincide, redirige al homeApp
+                            // Guardar el nombre de usuario en SharedPreferences
+                            if(storedUser!=null && id!=null){
+                                prefs.setName(storedUser)
+                                prefs.setidUsuario(id)
+                            }
+
+
+                            // Contraseña coincide, redirige a homeApp
                             val intent = Intent(this, homeApp::class.java)
                             startActivity(intent)
                             return@addOnSuccessListener
                         }
                     }
                     // Si no se encuentra un usuario coincidente, muestra un mensaje de error
-                    Toast.makeText(this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT)
-                        .show()
-
-                   // val intent = Intent(this, homeApp::class.java)
-                    //startActivity(intent)
-
+                    Toast.makeText(this, "Usuario o contraseña incorrecto", Toast.LENGTH_SHORT).show()
                 }
-
-            }
-            val buttonClickRegister = findViewById<Button>(R.id.button3)
-            buttonClickRegister.setOnClickListener {
-
-
-
-                val intent = Intent(this, register::class.java)
-                startActivity(intent)
         }
+
+        val buttonClickRegister = findViewById<Button>(R.id.button3)
+        buttonClickRegister.setOnClickListener {
+            val intent = Intent(this, register::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun setupDrawer() {
         drawerLayout = findViewById(R.id.myDrawer_layout)
-        // init action bar drawer toggle
-        actionBarDrawerToggle = ActionBarDrawerToggle(this,drawerLayout,R.string.nav_open,R.string.nav_close)
-        // add a drawer listener into  drawer layout
+        val navView: NavigationView = findViewById(R.id.nav_view)
+
+        // Inicializar ActionBarDrawerToggle
+        actionBarDrawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close)
         drawerLayout.addDrawerListener(actionBarDrawerToggle)
         actionBarDrawerToggle.syncState()
 
-        // show home icon on the app bar
+        // Mostrar el ícono de navegación en la barra de aplicaciones
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-    }
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return if (actionBarDrawerToggle.onOptionsItemSelected(item)){
-            true
-        }else{
-            super.onOptionsItemSelected(item)
+        // Listener para el ícono de navegación en la barra de aplicaciones
+        actionBarDrawerToggle.setToolbarNavigationClickListener {
+            Toast.makeText(this, "Icono de navegación clicado", Toast.LENGTH_SHORT).show()
         }
 
+        // Listener para los elementos del menú de navegación
+        navView.setNavigationItemSelectedListener(this)
+    }
+
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.aboutUs -> {
+                // Abrir la actividad aboutUs cuando se selecciona "About Us"
+                val intent = Intent(this, aboutUs::class.java)
+                startActivity(intent)
+            }
+        }
+
+        return true
+    }
+
+    private fun checkUserValues() {
+
+        if (prefs.getName().isNotEmpty()) {
+            val intent = Intent(this, homeApp::class.java)
+            startActivity(intent)
+
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
