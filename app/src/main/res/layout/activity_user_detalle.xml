@@ -4,6 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".UserListAdapter">
+    android:background="#6C2C2C"
+    tools:context=".users">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerUserView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:scrollbars="vertical" />
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

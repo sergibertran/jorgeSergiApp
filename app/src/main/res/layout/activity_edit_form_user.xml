@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#6C2C2C"
-    tools:context=".register">
+    tools:context=".userDetalle">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerUserView"

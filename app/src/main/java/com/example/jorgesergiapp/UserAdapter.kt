@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.example.jorgesergiapp.models.Usuario
 
 class UserListAdapter(private val listaUsuarios: List<Usuario>) :
@@ -14,13 +15,10 @@ class UserListAdapter(private val listaUsuarios: List<Usuario>) :
 
     class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFoto: ImageView = itemView.findViewById(R.id.imageViewFoto)
-        val usuario: TextView = itemView.findViewById(R.id.user)
+        val usuario: TextView = itemView.findViewById(R.id.textViewNombre)
 
 
-        fun bind(usuario: Usuario) {
 
-            this.usuario.text = usuario.usuario
-        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
@@ -31,12 +29,19 @@ class UserListAdapter(private val listaUsuarios: List<Usuario>) :
 
 
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
-        // Obtener el usuario en la posición actual
+
         val usuario = listaUsuarios[position]
+        val imageUrl = usuario.foto
 
-        // Llamar al método bind del ViewHolder para asociar los datos del usuario con las vistas
-        holder.bind(usuario)
 
+        val imageViewFoto: ImageView = holder.imageViewFoto
+        val textViewNombre: TextView =  holder.usuario
+
+        imageViewFoto.load(imageUrl) {
+            crossfade(true) // Animación de fade durante la carga de la imagen
+        }
+
+        textViewNombre.text = usuario.usuario
 
 
         holder.itemView.setOnClickListener {
