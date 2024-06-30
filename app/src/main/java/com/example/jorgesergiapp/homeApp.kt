@@ -241,7 +241,7 @@ class homeApp : AppCompatActivity() {
                         .add(pokemonSave)
                         .addOnSuccessListener {
                             Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                            // Puedes redirigir al usuario a otra pantalla si lo deseas
+
                         }
                         .addOnFailureListener { e ->
                             Toast.makeText(this, "Error al registrar: ${e.message}", Toast.LENGTH_SHORT).show()
