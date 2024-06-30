@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.jorgesergiapp.models.Usuario
 import com.example.jorgesergiapp.models.UsuarioList
+import com.example.jorgesergiapp.models.todosPokemons
 
-class UserAdapter(private val listaUsuarios: List<UsuarioList>) :
-    RecyclerView.Adapter<UserAdapter.UsuarioViewHolder>() {
+class pokemonEditAdapter(private val listaPokemons: List<todosPokemons>) :
+    RecyclerView.Adapter<pokemonEditAdapter.UsuarioViewHolder>() {
 
     class UsuarioViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val imageViewFoto: ImageView = itemView.findViewById(R.id.imageViewFoto)
@@ -23,38 +24,37 @@ class UserAdapter(private val listaUsuarios: List<UsuarioList>) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
         val itemView = LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_user, parent, false)
+            .inflate(R.layout.item_pokemon_edit, parent, false)
         return UsuarioViewHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
-        val usuario = listaUsuarios[position]
+        val pokemon = listaPokemons[position]
 
-        val imageUrl = usuario.foto
+        val imageUrl = pokemon.foto
 
         holder.imageViewFoto.load(imageUrl) {
             crossfade(true) // Animación de fade durante la carga de la imagen
         }
 
-        holder.usuario.text = usuario.usuario
+        holder.usuario.text = pokemon.nombre
 
         holder.buttonClickRegister.setOnClickListener {
-            val userList = Usuario(
-                usuario = usuario.usuario,
-                password = usuario.password,
-                foto = usuario.foto,
-                email = usuario.email,
-                tipoUsuario = usuario.tipoUsuario
+            val pokemonList = todosPokemons(
+                id = pokemon.id,
+                descripcion = pokemon.descripcion,
+                nombre = pokemon.nombre,
+                foto = pokemon.foto,
             )
 
-            val intent = Intent(holder.itemView.context, editFormUser::class.java).apply {
-                putExtra("usuario", userList)
+            val intent = Intent(holder.itemView.context, editFormPokemon::class.java).apply {
+                putExtra("pokemon", pokemonList)
             }
             holder.itemView.context.startActivity(intent)
         }
     }
 
     override fun getItemCount(): Int {
-        return listaUsuarios.size
+        return listaPokemons.size
     }
 }

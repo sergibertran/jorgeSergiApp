@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="215dp"
         android:layout_height="70dp"
-        android:text="Nombre Usuario"
+        android:text="Pokemons capturados"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.132"
@@ -29,9 +29,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.025"
-        tools:srcCompat="@tools:sample/avatars"
-        app:srcCompat="@drawable/profile_button"
-        />
+        app:srcCompat="@drawable/ball"
+        tools:srcCompat="@tools:sample/avatars" />
 
 
     <androidx.recyclerview.widget.RecyclerView

@@ -16,8 +16,7 @@ import com.google.firebase.firestore.ktx.firestore
 
 class detalle : AppCompatActivity() {
 
-    private lateinit var recyclerView: RecyclerView
-    private lateinit var pokemonAdapter: PokemonAdapter
+
     private var pokemons: MutableList<todosPokemons> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

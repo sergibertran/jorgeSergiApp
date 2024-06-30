@@ -8,31 +8,32 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jorgesergiapp.models.Usuario
 import com.example.jorgesergiapp.models.UsuarioList
+import com.example.jorgesergiapp.models.todosPokemons
 import com.google.firebase.firestore.FirebaseFirestore
 
-class userDetalle : AppCompatActivity() {
+class pokemonEditDetalle : AppCompatActivity() {
 
 
-    private var users: MutableList<UsuarioList> = mutableListOf()
+    private var pokemonsList: MutableList<todosPokemons> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_user_detalle)
+        setContentView(R.layout.activity_pokemonedit_detalle)
 
 
 
         val db = FirebaseFirestore.getInstance()
-        db.collection("usuarios")
+        db.collection("todosPokemons")
             .get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val id = document.id
-                    val user = UsuarioList(id,document.getString("usuario"),document.getString("password"),document.getString("foto"),document.getString("email"),document.getString("tipoUsuario"))
-                    users.add(user)
+                    val pokemons = todosPokemons(id,document.getString("descripcion"),document.getString("nombre"),document.getString("foto"))
+                    pokemonsList.add(pokemons)
 
                 }
 
-                val recyclerView: RecyclerView = findViewById(R.id.recyclerUserView)
-                val adapter = UserAdapter(users)
+                val recyclerView: RecyclerView = findViewById(R.id.recyclerPokemonEditView)
+                val adapter = pokemonEditAdapter(pokemonsList)
                 recyclerView.layoutManager = LinearLayoutManager(this)
                 recyclerView.adapter = adapter
 

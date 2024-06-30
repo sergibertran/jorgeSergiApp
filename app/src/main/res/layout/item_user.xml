@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/user"
+            android:id="@+id/textViewName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -33,5 +33,12 @@
 
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="242dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Button" />
 
 </LinearLayout>

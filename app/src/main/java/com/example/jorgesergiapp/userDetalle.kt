@@ -3,25 +3,22 @@ package com.example.jorgesergiapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jorgesergiapp.models.Usuario
-import com.example.jorgesergiapp.models.pokemons
-import com.example.jorgesergiapp.models.todosPokemons
+import com.example.jorgesergiapp.models.UsuarioList
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.ktx.toObject
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.firestore.ktx.firestore
 
-class users : AppCompatActivity() {
+class userDetalle : AppCompatActivity() {
 
 
-    private var users: MutableList<Usuario> = mutableListOf()
+    private var users: MutableList<UsuarioList> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_users)
+        setContentView(R.layout.activity_user_detalle)
+
+
 
         val db = FirebaseFirestore.getInstance()
         db.collection("usuarios")
@@ -29,15 +26,17 @@ class users : AppCompatActivity() {
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     val id = document.id
-                    val user = Usuario(id,document.getString("password"),document.getString("foto"),document.getString("email"),document.getString("tipoUsuario"))
+                    val user = UsuarioList(id,document.getString("usuario"),document.getString("password"),document.getString("foto"),document.getString("email"),document.getString("tipoUsuario"))
                     users.add(user)
 
                 }
 
                 val recyclerView: RecyclerView = findViewById(R.id.recyclerUserView)
-                val adapter = UserListAdapter(users)
+                val adapter = UserAdapter(users)
                 recyclerView.layoutManager = LinearLayoutManager(this)
                 recyclerView.adapter = adapter
+
+
 
             }
 
@@ -46,6 +45,8 @@ class users : AppCompatActivity() {
 
 
     }
+
+
 
 
 

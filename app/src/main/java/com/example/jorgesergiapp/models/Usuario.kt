@@ -1,29 +1,45 @@
 package com.example.jorgesergiapp.models
 
+import android.os.Parcel
+import android.os.Parcelable
 import java.io.Serializable
 
 data class Usuario(
-    val usuario: String,
-    val password: String,
-    val foto: Int,
-    val email: String,
-    val tipoUsuario: Int
-) {
-    // Constructor secundario sin foto
-    constructor(usuario: String, password: String, email: String, tipoUsuario: Int) :
-            this(usuario, password, 0, email, tipoUsuario) // Asigna un valor predeterminado a foto (por ejemplo, 0)
+    var usuario: String?,
+    var password: String?,
+    var foto: String?,
+    var email: String?,
+    var tipoUsuario: String?
+) : Parcelable {
+    constructor(parcel: Parcel) : this(
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString(),
+    parcel.readString()
+    )
 
-    // Constructor secundario con foto como Int
-    constructor(
-        usuario: String,
-        password: String,
-        email: String,
-        tipoUsuario: Int,
-        foto: Int
-    ) : this(usuario, password, foto, email, tipoUsuario)
-    constructor(
-        usuario: String,
-        email: String,
-        foto: Int
-    ) : this(usuario, "", foto, email, 0)
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(usuario)
+        parcel.writeString(password)
+        parcel.writeString(foto)
+        parcel.writeString(email)
+        parcel.writeString(tipoUsuario)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Usuario> {
+        override fun createFromParcel(parcel: Parcel): Usuario {
+            return Usuario(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Usuario?> {
+            return arrayOfNulls(size)
+        }
+    }
+
+
 }

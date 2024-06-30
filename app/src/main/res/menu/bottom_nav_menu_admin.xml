@@ -11,8 +11,11 @@
         <item android:id="@+id/profile"
             android:icon="@drawable/profile_button"
             android:title="Profile" />
-        <item android:id="@+id/page_4"
+        <item android:id="@+id/userDetalle"
             android:icon="@drawable/baseline_supervised_user_circle_24"
-            android:title="Search" />
+            android:title="users" />
+        <item android:id="@+id/pokemonEditDetalle"
+            android:icon="@drawable/baselineuser_supervised_user_circle_24"
+            android:title="Editarpokemons" />
 
 </menu>

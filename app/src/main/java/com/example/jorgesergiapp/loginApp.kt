@@ -51,11 +51,14 @@ class loginApp : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLis
                         val id = document.id
                         val storedPassword = document.getString("password")
                         val storedUser = document.getString("usuario")
+                        val isAdmin = document.getString("tipoUsuario")
                         if (storedPassword == usuarioPass.text.toString()) {
                             // Guardar el nombre de usuario en SharedPreferences
                             if(storedUser!=null && id!=null){
                                 prefs.setName(storedUser)
                                 prefs.setidUsuario(id)
+                                prefs.setisAdmin(isAdmin)
+
                             }
 
 

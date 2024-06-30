@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" >
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
@@ -23,28 +23,28 @@
             android:name=".PokemonAdapter"
             android:exported="false" />
         <activity
-            android:name=".pokemonDetailHostActivity"
-            android:exported="false"
-            android:label="@string/title_activity_pokemon_detail_host"
-            android:resizeableActivity="true"
-            tools:targetApi="24" />
-        <activity
             android:name=".detalle"
             android:exported="false" />
         <activity
             android:name=".aboutUs"
             android:exported="false" />
         <activity
-            android:name=".usersCrud"
-            android:exported="false" />
-        <activity
             android:name=".crud"
             android:exported="false" />
         <activity
-            android:name=".navigationdrawer"
+            android:name=".userDetalle"
+            android:exported="false" />
+        <activity
+            android:name=".editFormUser"
             android:exported="false" />
         <activity
             android:name=".profile"
+            android:exported="false" />
+        <activity
+            android:name=".pokemonEditDetalle"
+            android:exported="false" />
+        <activity
+            android:name=".editFormPokemon"
             android:exported="false" />
         <activity
             android:name=".register"

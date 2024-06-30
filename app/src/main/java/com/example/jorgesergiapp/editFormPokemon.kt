@@ -12,27 +12,27 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jorgesergiapp.models.Usuario
 import com.example.jorgesergiapp.models.UsuarioList
+import com.example.jorgesergiapp.models.todosPokemons
 import com.google.firebase.firestore.FirebaseFirestore
 
-class editFormUser : AppCompatActivity() {
+class editFormPokemon : AppCompatActivity() {
     @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_form_user)
+        setContentView(R.layout.activity_edit_form_pokemon)
 
-        val user: Usuario? = intent.getParcelableExtra("usuario", Usuario::class.java)
-        if (user != null) {
+        val poke: todosPokemons? = intent.getParcelableExtra("pokemon", todosPokemons::class.java)
+        if (poke != null) {
+
+
             val usuario: TextView =   findViewById<TextView>(R.id.editTextUsuario)
-            val email: TextView =   findViewById<TextView>(R.id.editTextEmail)
             val foto: TextView =   findViewById<TextView>(R.id.editTextFoto)
-            val password: TextView =   findViewById<TextView>(R.id.editTextPassword5)
-            val switch2 = findViewById<Switch>(R.id.switch2)
+            val descripcion: TextView =   findViewById<TextView>(R.id.editTextEmail)
 
-            switch2.isChecked = user.tipoUsuario == "1"
-            usuario.text=user.usuario
-            email.text=user.email
-            foto.text=user.foto
-            password.text=user.password
+            foto.text=poke.foto
+            usuario.text=poke.nombre
+            descripcion.text=poke.descripcion
+
 
             val buttonClickGuardar =  findViewById<Button>(R.id.button6)
             buttonClickGuardar.setOnClickListener {

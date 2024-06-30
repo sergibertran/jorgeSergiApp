@@ -8,6 +8,7 @@ class Prefs(val context: Context) {
     val SHARED_USER_NAME = "username"
     val SHARED_ID_USER = "idUsuario"
     val SHARED_TIMESTAMP = "ultimoOpening"
+    val SHARED_ADMIN = "isAdmin"
     val SHARED_FLIP_ENABLED = "flipEnabled"
     val storage = context.getSharedPreferences(SHARED_NAME,0)
 
@@ -21,6 +22,14 @@ class Prefs(val context: Context) {
 
     fun setflipEnabled(flipEnabled:Boolean){
         storage.edit().putBoolean(SHARED_FLIP_ENABLED, flipEnabled).apply()
+    }
+
+    fun setisAdmin(tipoUsuario:String?){
+        storage.edit().putString(SHARED_ADMIN, tipoUsuario).apply()
+    }
+
+    fun getisAdmin(): String {
+        return storage.getString(SHARED_ADMIN,"")!!
     }
     fun getflipEnabled(): Boolean {
         return storage.getBoolean(SHARED_FLIP_ENABLED,true)!!

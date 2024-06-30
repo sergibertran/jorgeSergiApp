@@ -68,7 +68,7 @@ class homeApp : AppCompatActivity() {
 
 
         val navigationView = findViewById<BottomNavigationView>(R.id.navigation_view)
-        val menuResId = if (prefs.getName().equals("admin")) R.menu.bottom_nav_menu_admin else R.menu.bottom_nav_menu
+        val menuResId = if (prefs.getisAdmin().equals("1")) R.menu.bottom_nav_menu_admin else R.menu.bottom_nav_menu
 
         // Establecer el menú en el BottomNavigationView
         navigationView.menu.clear() // Limpiar el menú actual
@@ -88,7 +88,15 @@ class homeApp : AppCompatActivity() {
                 val intent = Intent(this, detalle::class.java)
                 startActivity(intent)
                 true
-                }
+                } R.id.userDetalle -> {
+                val intent = Intent(this, userDetalle::class.java)
+                startActivity(intent)
+                true
+            } R.id.pokemonEditDetalle -> {
+                val intent = Intent(this, pokemonEditDetalle::class.java)
+                startActivity(intent)
+                true
+            }
                 // Agrega más casos según sea necesario
                 else -> false
             }
@@ -192,15 +200,20 @@ class homeApp : AppCompatActivity() {
                     val date = timestampActual.toDate()
                     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                     prefs.setultimoOpening(sdf.format(date))
+                }else if(cartas.size==0){
+                    terminado=true;
+                    val date = timestampActual.toDate()
+                    val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
+                    prefs.setultimoOpening(sdf.format(date))
+
+
+
                 }else{
                     prefs.setflipEnabled(false)
                     flip.isEnabled=false
                     val date = obtenerCartas.get(0).ultimoOpening.toDate()
                     val sdf = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.getDefault())
                     prefs.setultimoOpening(sdf.format(date))
-
-
-
                 }
                 terminado=true;
             },
