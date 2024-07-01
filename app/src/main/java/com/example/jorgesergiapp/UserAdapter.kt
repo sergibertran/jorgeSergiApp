@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.example.jorgesergiapp.models.Usuario
@@ -47,9 +48,13 @@ class UserAdapter(private val listaUsuarios: List<UsuarioList>) :
                 tipoUsuario = usuario.tipoUsuario
             )
 
+
+
             val intent = Intent(holder.itemView.context, editFormUser::class.java).apply {
                 putExtra("usuario", userList)
+
             }
+
             holder.itemView.context.startActivity(intent)
         }
     }

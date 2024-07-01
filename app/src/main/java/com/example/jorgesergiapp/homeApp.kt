@@ -46,6 +46,7 @@ class homeApp : AppCompatActivity() {
     private var pokemonsDisponibles: MutableList<todosPokemons> = mutableListOf()
     private lateinit var pokemonSorpresa: todosPokemons
     private lateinit var pokemonSave: pokemons
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         var mediaPlayer: MediaPlayer? = null
@@ -73,26 +74,33 @@ class homeApp : AppCompatActivity() {
         // Establecer el menú en el BottomNavigationView
         navigationView.menu.clear() // Limpiar el menú actual
         navigationView.inflateMenu(menuResId) // Inflar el menú correspondiente
-
+        val flip = findViewById<Button>(R.id.flip_btn) as Button
         navigationView.setOnItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.home -> {
+
                     val intent = Intent(this, homeApp::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                     startActivity(intent)
                     true
                 } R.id.profile -> {
+
                 val intent = Intent(this, profile::class.java)
+           
                 startActivity(intent)
                 true
                 } R.id.listaTodosPokemons -> {
+
                 val intent = Intent(this, detalle::class.java)
                 startActivity(intent)
                 true
                 } R.id.userDetalle -> {
+
                 val intent = Intent(this, userDetalle::class.java)
                 startActivity(intent)
                 true
             } R.id.pokemonEditDetalle -> {
+
                 val intent = Intent(this, pokemonEditDetalle::class.java)
                 startActivity(intent)
                 true
@@ -130,8 +138,16 @@ class homeApp : AppCompatActivity() {
                     }
                 }
                 val cardFront: TextView = findViewById(R.id.card_front)
-                val cardBack: TextView = findViewById(R.id.card_back)
 
+
+                var todosEncontrados = pokemons.all { pokemon -> pokemonsPropios.contains(pokemon.id) }
+
+                if(todosEncontrados){
+                    flip.isEnabled=false
+                    val texto = findViewById<TextView>(R.id.textView11) as TextView
+                    texto.text ="Actualmente tienes todos los Pokemons"
+
+                }
 
                 cardFront.setBackgroundResource(R.drawable.card_random)
                 if (pokemonsDisponibles.isNotEmpty()) {
@@ -176,7 +192,7 @@ class homeApp : AppCompatActivity() {
         var scale = applicationContext.resources.displayMetrics.density
         val front = findViewById<TextView>(R.id.card_front) as TextView
         val back =findViewById<TextView>(R.id.card_back) as TextView
-        val flip = findViewById<Button>(R.id.flip_btn) as Button
+
         val sound = findViewById<Button>(R.id.sound) as Button
         front.cameraDistance = 8000 * scale
         back.cameraDistance = 8000 * scale

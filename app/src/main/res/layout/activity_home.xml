@@ -10,6 +10,7 @@
 
     <!--Add a textView for front part of the card-->
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#6C2C2C"
@@ -24,15 +25,22 @@
             android:id="@+id/sound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Musica"
-            android:layout_marginTop="30dp"
             android:layout_marginLeft="142dp"
-            tools:layout_editor_absoluteX="142dp"
-            tools:layout_editor_absoluteY="559dp"
+            android:layout_marginTop="30dp"
+            android:text="Musica"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteX="142dp"
+            tools:layout_editor_absoluteY="559dp" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
+
     </FrameLayout>
 
     <TextView
@@ -49,6 +57,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <!--Add a textview for back part of the card-->
+
     <TextView
         android:id="@+id/card_front"
         android:layout_width="300dp"
