@@ -21,6 +21,9 @@ class editFormPokemon : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_form_pokemon)
 
+        val buttonClickGuardar =  findViewById<Button>(R.id.button6)
+        val buttonClickEliminar =  findViewById<Button>(R.id.button8)
+
         val poke: todosPokemons? = intent.getParcelableExtra("pokemon", todosPokemons::class.java)
         if (poke != null) {
 
@@ -34,21 +37,23 @@ class editFormPokemon : AppCompatActivity() {
             descripcion.text=poke.descripcion
 
 
-            val buttonClickGuardar =  findViewById<Button>(R.id.button6)
-            buttonClickGuardar.setOnClickListener {
+
+
+        }else{
+            buttonClickEliminar.isEnabled=false
+        }
+
+        buttonClickGuardar.setOnClickListener {
             // guardar
 
-                }
-            val buttonClickEliminar =  findViewById<Button>(R.id.button6)
-            buttonClickEliminar.setOnClickListener {
+        }
+
+        buttonClickEliminar.setOnClickListener {
             // eliminar
 
 
 
-            }
-
         }
-
 
     }
 
