@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -34,7 +33,6 @@ class editFormUser : AppCompatActivity() {
         var documentId: String
 
 
-        var usuarioNombre: String? = ""
         val user: Usuario? = intent.getParcelableExtra("usuario", Usuario::class.java)
         if (user != null) {
 
@@ -220,7 +218,10 @@ class editFormUser : AppCompatActivity() {
 
 
 
+            }
+
         }
+
 
     }
 
