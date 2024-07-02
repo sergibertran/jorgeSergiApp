@@ -62,10 +62,10 @@
         android:id="@+id/card_front"
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:textAlignment="center"
+        android:background="@drawable/card_random"
         android:gravity="center"
+        android:textAlignment="center"
         android:textSize="22sp"
-        android:background="#326314"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -76,15 +76,13 @@
         android:id="@+id/flip_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Flip Me"
-        tools:ignore="MissingConstraints"
         android:layout_marginTop="380dp"
-        tools:layout_editor_absoluteX="142dp"
-        tools:layout_editor_absoluteY="559dp"
+        android:text="GIRAR"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/navigation_view"

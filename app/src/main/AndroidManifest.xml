@@ -32,9 +32,6 @@
             android:name=".aboutUs"
             android:exported="false" />
         <activity
-            android:name=".crud"
-            android:exported="false" />
-        <activity
             android:name=".userDetalle"
             android:exported="false" />
         <activity
