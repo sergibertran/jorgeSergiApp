@@ -18,8 +18,82 @@
         app:layout_constraintHorizontal_bias="0.473"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.175"
+        app:layout_constraintVertical_bias="0.08"
         app:srcCompat="@drawable/international_pok_mon_logo_svg" />
+
+
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="36dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:hint="usuario"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.465" />
+
+    <EditText
+        android:id="@+id/editTextTextEmailAddress3"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginEnd="110dp"
+        android:layout_marginBottom="36dp"
+        android:background="#BAB7B7"
+        android:ems="10"
+        android:hint="mail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.558" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword2"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="110dp"
+        android:background="#BAB0B0"
+        android:ems="10"
+        android:hint="contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.595" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword4"
+        android:layout_width="210dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="91dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="110dp"
+        android:background="#BAB0B0"
+        android:ems="10"
+        android:hint="repite contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.699" />
 
     <Button
         android:id="@+id/button2"
@@ -38,76 +112,11 @@
         app:layout_constraintVertical_bias="0.865"
         app:rippleColor="#BC5656" />
 
-    <EditText
-        android:id="@+id/editTextTextEmailAddress"
-        android:layout_width="210dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="36dp"
-        android:background="#BAB7B7"
-        android:ems="10"
-        android:hint="usuario"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.464" />
-
-    <EditText
-        android:id="@+id/editTextTextEmailAddress3"
-        android:layout_width="210dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginEnd="110dp"
-        android:layout_marginBottom="36dp"
-        android:background="#BAB7B7"
-        android:ems="10"
-        android:hint="mail"
-        android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.558" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword2"
-        android:layout_width="210dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="110dp"
-        android:background="#BAB0B0"
-        android:ems="10"
-        android:hint="contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.595" />
-
-    <EditText
-        android:id="@+id/editTextTextPassword4"
-        android:layout_width="210dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="110dp"
-        android:background="#BAB0B0"
-        android:ems="10"
-        android:hint="repite contraseña"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.699" />
-
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Todos los campos son requeridos"
+        tools:layout_editor_absoluteX="74dp"
+        tools:layout_editor_absoluteY="549dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

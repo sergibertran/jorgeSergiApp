@@ -123,8 +123,8 @@ class profile : AppCompatActivity() {
         }
 
 
-        val buttonClickRegister = findViewById<Button>(R.id.button5)
-        buttonClickRegister.setOnClickListener {
+        val buttonLogoUT = findViewById<Button>(R.id.button5)
+        buttonLogoUT.setOnClickListener {
 
             prefs.wipe()
 

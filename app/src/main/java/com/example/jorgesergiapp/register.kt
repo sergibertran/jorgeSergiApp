@@ -47,6 +47,8 @@ class register : AppCompatActivity() {
             val nombre = etName.text.toString().trim()
             val password = etPassword.text.toString().trim()
             val correo = etCorreo.text.toString().trim()
+
+
             if(!nombre.isEmpty() && !password.isEmpty() && !correo.isEmpty()){
 
 

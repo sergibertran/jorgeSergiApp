@@ -63,7 +63,7 @@ class homeApp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-
+        val sound = findViewById<Button>(R.id.sound) as Button
 
 
 
@@ -193,7 +193,7 @@ class homeApp : AppCompatActivity() {
         val front = findViewById<TextView>(R.id.card_front) as TextView
         val back =findViewById<TextView>(R.id.card_back) as TextView
 
-        val sound = findViewById<Button>(R.id.sound) as Button
+
         front.cameraDistance = 8000 * scale
         back.cameraDistance = 8000 * scale
 
