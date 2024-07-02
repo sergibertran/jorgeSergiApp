@@ -47,6 +47,7 @@ class pokemonEditAdapter(private val listaPokemons: List<todosPokemons>) :
                 foto = pokemon.foto,
             )
 
+
             val intent = Intent(holder.itemView.context, editFormPokemon::class.java).apply {
                 putExtra("pokemon", pokemonList)
             }

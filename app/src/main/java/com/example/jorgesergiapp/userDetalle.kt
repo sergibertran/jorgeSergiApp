@@ -40,7 +40,12 @@ class userDetalle : AppCompatActivity() {
 
             }
 
-
+        val buttonClickRegister = findViewById<Button>(R.id.button9)
+        finish()
+        buttonClickRegister.setOnClickListener {
+            val intent = Intent(this, editFormUser::class.java)
+            startActivity(intent)
+        }
 
 
 

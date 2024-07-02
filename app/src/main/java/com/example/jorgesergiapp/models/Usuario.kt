@@ -2,7 +2,6 @@ package com.example.jorgesergiapp.models
 
 import android.os.Parcel
 import android.os.Parcelable
-import java.io.Serializable
 
 data class Usuario(
     var usuario: String?,

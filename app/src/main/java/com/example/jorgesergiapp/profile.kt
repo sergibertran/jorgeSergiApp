@@ -11,8 +11,6 @@ import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -20,11 +18,10 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jorgesergiapp.models.Usuario
 import com.example.jorgesergiapp.models.todosPokemons
 import com.example.jorgesergiapp.userApp.Companion.prefs
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
@@ -98,7 +95,32 @@ class profile : AppCompatActivity() {
         ////)
 
 
+        val buttonClickModifUser = findViewById<Button>(R.id.button4)
+        buttonClickModifUser.setOnClickListener {
+            val db = FirebaseFirestore.getInstance()
+            db.collection("usuarios").whereEqualTo("usuario", prefs.getName())
+                .get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents) {
 
+                        val userList = Usuario(
+                            usuario = document.getString("usuario"),
+                            password = document.getString("password"),
+                            foto = document.getString("foto"),
+                            email = document.getString("email"),
+                            tipoUsuario = document.getString("tipoUsuario")
+                        )
+
+                        val intent = Intent(this, editFormNormalUser::class.java).apply {
+                            putExtra("usuario", userList)
+                        }
+                        startActivity(intent)
+                    }
+
+                }
+
+
+        }
 
 
         val buttonClickRegister = findViewById<Button>(R.id.button5)

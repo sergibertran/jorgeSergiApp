@@ -7,10 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
 import android.os.Bundle
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.jorgesergiapp.models.Usuario
-import com.example.jorgesergiapp.models.UsuarioList
 
 class register : AppCompatActivity() {
     private lateinit var etName: EditText

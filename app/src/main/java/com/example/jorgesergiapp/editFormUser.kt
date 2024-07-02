@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,6 +34,7 @@ class editFormUser : AppCompatActivity() {
         var documentId: String
 
 
+        var usuarioNombre: String? = ""
         val user: Usuario? = intent.getParcelableExtra("usuario", Usuario::class.java)
         if (user != null) {
 
@@ -53,80 +55,86 @@ class editFormUser : AppCompatActivity() {
             if(!usuario.text.isEmpty() && !email.text.isEmpty() && !foto.text.isEmpty() && !password.text.isEmpty()){
 
 
-            val db = FirebaseFirestore.getInstance()
-            db.collection("usuarios").whereEqualTo("usuario", usuario.text.toString())
-                .get()
-                .addOnSuccessListener { documents ->
-                    for (document in documents) {
-                        usuarioNombre = (document.getString("usuario"))
-
-
-                    }
-
-                }
-            if(switch2.isChecked){
-                isAdmin="1"
-            }else{
-                isAdmin="0"
-            }
-            val user = Usuario(usuario.text.toString(), password.text.toString(),foto.text.toString(), email.text.toString(),isAdmin)
-
-            if(!userExists){
-                if(!usuarioNombre.equals(usuario.text.toString())){
-
                 val db = FirebaseFirestore.getInstance()
-
-                db.collection("usuarios")
-                    .add(user)
-                    .addOnSuccessListener {
-                        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this, loginApp::class.java)
-                        startActivity(intent)
-                    }
-                    .addOnFailureListener { e ->
-                        Toast.makeText(this, "Error al registrar: ${e.message}", Toast.LENGTH_SHORT).show()
-                    }
-                }else{
-                    Toast.makeText(this, "Ya existe este nobmre de usuario: ", Toast.LENGTH_SHORT).show()
-                }
-            }else{
-
-
-                val db = FirebaseFirestore.getInstance()
-                val obtenerCartasRef = db.collection("usuarios")
-                obtenerCartasRef.whereEqualTo("usuario", usuarioNombre).get()
+                db.collection("usuarios").whereEqualTo("usuario", usuario.text.toString())
+                    .get()
                     .addOnSuccessListener { documents ->
-                        if (documents.isEmpty) {
-                            println("No se encontró ningún documento para el usuario $usuario.text.toString() en la colección 'obtenerCarta'.")
-                        } else {
-                            for (document in documents) {
-                                val documentRef = document.reference
-                                documentRef.update("email", email.text.toString())
-                                documentRef.update("foto", foto.text.toString())
-                                documentRef.update("password", password.text.toString())
-                                documentRef.update("tipoUsuario", isAdmin)
-                                documentRef.update("usuario", usuario.text.toString())
-                                    .addOnSuccessListener {
-                                        println("Se actualizó 'ultimoOpening' para el usuario $usuario.text.")
-                                    }
-                                    .addOnFailureListener { exception ->
-                                        println("Error al actualizar 'ultimoOpening': $exception")
-                                    }
-                            }
+                        for (document in documents) {
+                            usuarioNombre = (document.getString("usuario"))
+
+
                         }
+
+                        if(switch2.isChecked){
+                            isAdmin="1"
+                        }else{
+                            isAdmin="0"
+                        }
+                        val user = Usuario(usuario.text.toString(), password.text.toString(),foto.text.toString(), email.text.toString(),isAdmin)
+
+                        if(!userExists){
+                            if(!usuarioNombre.equals(usuario.text.toString())){
+
+                                val db = FirebaseFirestore.getInstance()
+
+                                db.collection("usuarios")
+                                    .add(user)
+                                    .addOnSuccessListener {
+                                        Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                                        finish()
+                                        val intent = Intent(this, loginApp::class.java)
+                                        startActivity(intent)
+                                    }
+                                    .addOnFailureListener { e ->
+                                        Toast.makeText(this, "Error al registrar: ${e.message}", Toast.LENGTH_SHORT).show()
+                                    }
+                            }else{
+                                Toast.makeText(this, "Ya existe este nobmre de usuario: ", Toast.LENGTH_SHORT).show()
+                            }
+                        }else{
+
+
+                            val db = FirebaseFirestore.getInstance()
+                            val obtenerCartasRef = db.collection("usuarios")
+                            obtenerCartasRef.whereEqualTo("usuario", usuarioNombre).get()
+                                .addOnSuccessListener { documents ->
+                                    if (documents.isEmpty) {
+                                        println("No se encontró ningún documento para el usuario $usuario.text.toString() en la colección 'obtenerCarta'.")
+                                    } else {
+                                        for (document in documents) {
+                                            val documentRef = document.reference
+                                            documentRef.update("email", email.text.toString())
+                                            documentRef.update("foto", foto.text.toString())
+                                            documentRef.update("password", password.text.toString())
+                                            documentRef.update("tipoUsuario", isAdmin)
+                                            documentRef.update("usuario", usuario.text.toString())
+                                                .addOnSuccessListener {
+                                                    Toast.makeText(this, "Actualizado correctamente", Toast.LENGTH_SHORT).show()
+                                                    finish()
+                                                    val intent = Intent(this, userDetalle::class.java)
+                                                    startActivity(intent)
+                                                }
+                                                .addOnFailureListener { exception ->
+                                                    println("Error al actualizar 'ultimoOpening': $exception")
+                                                }
+                                        }
+                                    }
+                                }
+                                .addOnFailureListener { exception ->
+                                    println("Error al realizar la consulta: $exception")
+                                }
+
+
+
+
+                        }
+
                     }
-                    .addOnFailureListener { exception ->
-                        println("Error al realizar la consulta: $exception")
+
+
+
                     }
 
-
-
-
-            }
-
-            }else{
-                Toast.makeText(this, "Todos los campos son obligatorios: ", Toast.LENGTH_SHORT).show()
-            }
         }
 
         buttonClickEliminar.setOnClickListener {
@@ -139,7 +147,7 @@ class editFormUser : AppCompatActivity() {
                     } else {
                         for (document in documents) {
                             documentId = document.id
-                             var documentRef = document.reference
+                            var documentRef = document.reference
                             documentRef.delete()
                                 .addOnSuccessListener {
                                     println("Se eliminó el documento para el usuario ${usuario.text}.")
@@ -198,7 +206,6 @@ class editFormUser : AppCompatActivity() {
 
                                     }else{
                                         finish()
-
                                         val intent = Intent(this, userDetalle::class.java)
                                         startActivity(intent)
                                     }
@@ -218,15 +225,8 @@ class editFormUser : AppCompatActivity() {
 
 
 
-            }
-
         }
 
-
     }
 
-    }
-
-
-
-
+}

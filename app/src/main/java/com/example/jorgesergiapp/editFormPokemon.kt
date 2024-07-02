@@ -64,8 +64,6 @@ class editFormPokemon : AppCompatActivity() {
 
                         }
 
-
-
                         val pokemon = todosPokemonObject(descripcion.text.toString(),usuario.text.toString(),foto.text.toString(), )
                         if(!pokemonExists){
                             if(!usuarioNombre.equals(usuario.text.toString())){
@@ -104,6 +102,9 @@ class editFormPokemon : AppCompatActivity() {
 
                                                 .addOnSuccessListener {
                                                     println("Se actualizó 'ultimoOpening' para el usuario $usuario.text.")
+                                                    finish()
+                                                    val intent = Intent(this, pokemonEditDetalle::class.java)
+                                                    startActivity(intent)
                                                 }
                                                 .addOnFailureListener { exception ->
                                                     println("Error al actualizar 'ultimoOpening': $exception")
@@ -128,10 +129,10 @@ class editFormPokemon : AppCompatActivity() {
 
 
 
-                    }
+            }
 
         }
-     buttonClickEliminar.setOnClickListener {
+        buttonClickEliminar.setOnClickListener {
             val db = FirebaseFirestore.getInstance()
             val obtenerPokemonsRef = db.collection("todosPokemons")
             obtenerPokemonsRef.whereEqualTo("nombre", pokeNombre).get()
@@ -184,16 +185,13 @@ class editFormPokemon : AppCompatActivity() {
 
 
                     }
-                    }
+                }
 
 
-                    }
-
+        }
 
 
 
 
     }
-    }
-
-
+}

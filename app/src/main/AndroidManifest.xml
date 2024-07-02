@@ -26,6 +26,9 @@
             android:name=".detalle"
             android:exported="false" />
         <activity
+            android:name=".editFormNormalUser"
+            android:exported="false" />
+        <activity
             android:name=".aboutUs"
             android:exported="false" />
         <activity
