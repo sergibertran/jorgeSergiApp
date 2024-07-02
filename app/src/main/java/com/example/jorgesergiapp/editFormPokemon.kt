@@ -103,6 +103,7 @@ class editFormPokemon : AppCompatActivity() {
                                                 .addOnSuccessListener {
                                                     println("Se actualizó 'ultimoOpening' para el usuario $usuario.text.")
                                                     finish()
+                                                    intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK
                                                     val intent = Intent(this, pokemonEditDetalle::class.java)
                                                     startActivity(intent)
                                                 }
